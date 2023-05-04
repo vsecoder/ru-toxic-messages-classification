@@ -1,13 +1,19 @@
-import pickle, sklearn
+import pickle
 import dill
+import nltk
 
 import time
 
 
 class API:
+    """"""
+
     def __init__(self):
         pkl_filename = "pickle_model.pkl"
         vct_filename = "vectorizer.pkl"
+
+        nltk.download('punkt')
+        nltk.download('stopwords')
 
         with open(pkl_filename, 'rb') as file:
             self.pickle_model = pickle.load(file)
@@ -15,7 +21,9 @@ class API:
         with open(vct_filename, 'rb') as file:
             self.pickle_vectorizer = dill.load(file)
 
+
     def check(self, text):
+        """"""
         start_time = time.time()
         answer =  self.pickle_model.predict(
             self.pickle_vectorizer.transform(
