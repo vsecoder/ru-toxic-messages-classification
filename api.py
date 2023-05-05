@@ -25,16 +25,17 @@ class API:
     def check(self, text):
         """"""
         start_time = time.time()
-        answer =  self.pickle_model.predict(
+        answer =  self.pickle_model.predict_proba(
             self.pickle_vectorizer.transform(
                 [text]
             )
         )
 
         return {
-            "text": text,
-            "answer": 'toxic' if answer[0] else 'neutral',
-            "time": f'{time.time() - start_time}s'
+            #"text": text,
+            "toxic_percent": round(answer[0][1] * 100, 2),
+            "neutral_percent": round(answer[0][0] * 100, 2),
+            "work_time": f'{round(time.time() - start_time, 4)}s'
         }
 
 
