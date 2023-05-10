@@ -1,4 +1,10 @@
-FROM python:3.8-slim as python-base
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
+
+RUN apt-get install python3 python3-pip
 
 COPY ./ ./
 
@@ -9,4 +15,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 7860
 
 # Run npm start script when container starts
-CMD [ "gradio", "server.py" ]
+CMD [ "python3", "server.py" ]
