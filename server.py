@@ -34,4 +34,4 @@ with gr.Blocks() as demo:
         gr.Markdown("https://github.com/vsecoder/ru-toxic-messages-classification")
 
 
-demo.launch(share=True)
+demo.launch(share=True, server_port=7860)
