@@ -9,7 +9,7 @@ ENV LANG en_US.utf8
 COPY ./ ./
 
 # Install all dependencies (with dev ones)
-RUN pip3 install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
 
 # Expose the listening port
 EXPOSE 7860
