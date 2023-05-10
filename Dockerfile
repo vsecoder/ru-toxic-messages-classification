@@ -9,4 +9,4 @@ RUN pip3 install -r requirements.txt
 EXPOSE 7860
 
 # Run npm start script when container starts
-CMD [ "python3", "server.py" ]
+CMD [ "gradio", "server.py" ]
